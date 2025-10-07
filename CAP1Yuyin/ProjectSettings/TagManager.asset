@@ -4,17 +4,20 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Projectile
+  - Floor
+  - Ray
+  - Coin
+  - Spikes
+  - DeathZone
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Floor
   - Water
   - UI
   - 
   - 
-  - fondo
   - 
   - 
   - 
@@ -34,17 +37,12 @@ TagManager:
   - 
   - 
   - 
-  - fondo2
+  - 
+  - 
   - 
   - 
   - 
   m_SortingLayers:
-  - name: fondo
-    uniqueID: 3867740651
-    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: frrente
-    uniqueID: 2484147381
     locked: 0
