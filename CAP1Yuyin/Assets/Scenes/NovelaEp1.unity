@@ -577,7 +577,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 66.175255
+    x: 67.22787
     y: 70
     width: 81.57893
     height: 40
@@ -696,7 +696,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 79ed5e8a7e6a1494186e522d9101ecfd, type: 3}
 --- !u!114 &2047523551
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -716,7 +716,7 @@ MonoBehaviour:
   fadeTweenType: 4
 --- !u!114 &2047523552
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -743,26 +743,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2047523544}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Script: {fileID: 11500000, guid: bd2f6be51b3d7490ba5633ee095d0391, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 5
   indentLevel: 0
-  storyText: 'PENE
-
-'
-  description: 
-  character: {fileID: 0}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
+  soundClip: {fileID: 8300000, guid: 2b92a395023edab41a39e8549c51ade4, type: 3}
+  volume: 0.289
+  waitUntilFinished: 0
 --- !u!1 &2100939854
 GameObject:
   m_ObjectHideFlags: 0
