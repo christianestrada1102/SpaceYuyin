@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Camera : MonoBehaviour
+public class MyCamera : MonoBehaviour
 {
+    internal static object main;
     public Transform target; 
 
     private void LateUpdate()
