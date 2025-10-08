@@ -308,6 +308,13 @@ MonoBehaviour:
   - {fileID: 1832125628}
   - {fileID: 762047723}
   constellationLines: {fileID: 0}
+  panelVictoria: {fileID: 0}
+  textoVictoria: {fileID: 0}
+  textoTimer: {fileID: 0}
+  mensajeVictoria: "\xA1Felicidades!\n\xA1Has completado la Osa Mayor!"
+  nombreEscenaSiguiente: Miniuego3.1
+  tiempoAntesDeAparecer: 0.5
+  tiempoAntesDecambiarEscena: 5
 --- !u!114 &161265333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,8 +365,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 925204909
+  m_SortingLayer: 1
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 83bb9b768d3a6734aae0bfb712f96018, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -767,6 +774,13 @@ MonoBehaviour:
   - {fileID: 1832125628}
   - {fileID: 762047723}
   constellationLines: {fileID: 0}
+  panelVictoria: {fileID: 0}
+  textoVictoria: {fileID: 0}
+  textoTimer: {fileID: 0}
+  mensajeVictoria: "\xA1Felicidades!\n\xA1Has completado la Osa Mayor!"
+  nombreEscenaSiguiente: Miniuego3.1
+  tiempoAntesDeAparecer: 0.5
+  tiempoAntesDecambiarEscena: 5
 --- !u!114 &707440896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -817,8 +831,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 925204909
+  m_SortingLayer: 1
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 83bb9b768d3a6734aae0bfb712f96018, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1033,7 +1047,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1810819915
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ecd4a785f5caa714a97872ca4d1ad760, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1259,6 +1273,13 @@ MonoBehaviour:
   - {fileID: 1832125628}
   - {fileID: 762047723}
   constellationLines: {fileID: 0}
+  panelVictoria: {fileID: 0}
+  textoVictoria: {fileID: 0}
+  textoTimer: {fileID: 0}
+  mensajeVictoria: "\xA1Felicidades!\n\xA1Has completado la Osa Mayor!"
+  nombreEscenaSiguiente: Miniuego3.1
+  tiempoAntesDeAparecer: 0.5
+  tiempoAntesDecambiarEscena: 5
 --- !u!114 &1041016339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1309,8 +1330,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 925204909
+  m_SortingLayer: 1
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 83bb9b768d3a6734aae0bfb712f96018, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1452,6 +1473,13 @@ MonoBehaviour:
   - {fileID: 1832125628}
   - {fileID: 762047723}
   constellationLines: {fileID: 0}
+  panelVictoria: {fileID: 0}
+  textoVictoria: {fileID: 0}
+  textoTimer: {fileID: 0}
+  mensajeVictoria: "\xA1Felicidades!\n\xA1Has completado la Osa Mayor!"
+  nombreEscenaSiguiente: Miniuego3.1
+  tiempoAntesDeAparecer: 0.5
+  tiempoAntesDecambiarEscena: 5
 --- !u!114 &1086100866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1502,8 +1530,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 925204909
+  m_SortingLayer: 1
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 83bb9b768d3a6734aae0bfb712f96018, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1630,6 +1658,13 @@ MonoBehaviour:
   - {fileID: 1832125628}
   - {fileID: 762047723}
   constellationLines: {fileID: 0}
+  panelVictoria: {fileID: 0}
+  textoVictoria: {fileID: 0}
+  textoTimer: {fileID: 0}
+  mensajeVictoria: "\xA1Felicidades!\n\xA1Has completado la Osa Mayor!"
+  nombreEscenaSiguiente: Miniuego3.1
+  tiempoAntesDeAparecer: 0.5
+  tiempoAntesDecambiarEscena: 5
 --- !u!114 &1090357269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1680,8 +1715,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 925204909
+  m_SortingLayer: 1
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 83bb9b768d3a6734aae0bfb712f96018, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1989,7 +2024,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -427226645
-  m_SortingLayer: -1
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 8af57e43b5767104580271d5d970c4bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2154,8 +2189,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 925204909
+  m_SortingLayer: 1
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 83bb9b768d3a6734aae0bfb712f96018, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2210,6 +2245,13 @@ MonoBehaviour:
   - {fileID: 1832125628}
   - {fileID: 762047723}
   constellationLines: {fileID: 0}
+  panelVictoria: {fileID: 0}
+  textoVictoria: {fileID: 0}
+  textoTimer: {fileID: 0}
+  mensajeVictoria: "\xA1Felicidades!\n\xA1Has completado la Osa Mayor!"
+  nombreEscenaSiguiente: Miniuego3.1
+  tiempoAntesDeAparecer: 0.5
+  tiempoAntesDecambiarEscena: 5
 --- !u!1 &1609663211
 GameObject:
   m_ObjectHideFlags: 0
@@ -2339,6 +2381,13 @@ MonoBehaviour:
   - {fileID: 1832125628}
   - {fileID: 762047723}
   constellationLines: {fileID: 0}
+  panelVictoria: {fileID: 0}
+  textoVictoria: {fileID: 0}
+  textoTimer: {fileID: 0}
+  mensajeVictoria: "\xA1Felicidades!\n\xA1Has completado la Osa Mayor!"
+  nombreEscenaSiguiente: Miniuego3.1
+  tiempoAntesDeAparecer: 0.5
+  tiempoAntesDecambiarEscena: 5
 --- !u!114 &1609663217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2389,8 +2438,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 925204909
+  m_SortingLayer: 1
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 83bb9b768d3a6734aae0bfb712f96018, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2543,7 +2592,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -427226645
-  m_SortingLayer: -1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6353384fe04923e42ab15bd2b0bf3cb5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2568,8 +2617,7 @@ Transform:
   m_LocalPosition: {x: 0.43, y: 2.38, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1938125862}
+  m_Children: []
   m_Father: {fileID: 1149332168}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1828176659
@@ -2659,7 +2707,7 @@ Transform:
   m_GameObject: {fileID: 1938125861}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.51, y: -2.56, z: 0.030239018}
+  m_LocalPosition: {x: -1.0799999, y: -0.17999983, z: 0.030239105}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2670,7 +2718,7 @@ Transform:
   - {fileID: 1086100861}
   - {fileID: 1041016334}
   - {fileID: 1090357271}
-  m_Father: {fileID: 1705672519}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -2680,3 +2728,4 @@ SceneRoots:
   - {fileID: 316932438}
   - {fileID: 1483811258}
   - {fileID: 953837175}
+  - {fileID: 1938125862}
