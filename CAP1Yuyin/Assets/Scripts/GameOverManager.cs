@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class GameOverManager : MonoBehaviour
 {
@@ -7,6 +9,7 @@ public class GameOverManager : MonoBehaviour
 
     [Header("UI")]
     public GameObject panelGameOver;
+    public Button buttonRestart;
 
     void Awake()
     {
@@ -20,6 +23,11 @@ public class GameOverManager : MonoBehaviour
     {
         if (panelGameOver != null)
             panelGameOver.SetActive(false);
+
+        if (buttonRestart != null)
+        {
+            buttonRestart.onClick.AddListener(Reiniciar);
+        }
     }
 
     public void MostrarGameOver()
@@ -33,6 +41,7 @@ public class GameOverManager : MonoBehaviour
 
     public void Reiniciar()
     {
+        Debug.Log("¡Reiniciando juego!");
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
