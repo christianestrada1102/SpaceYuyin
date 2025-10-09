@@ -4,26 +4,5 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
-    path: Assets/Scenes/Minijuego3.2.unity
-    guid: 2391c9ca9bee9744a92fa0efb3badc6e
-<<<<<<< Updated upstream
-  - enabled: 0
-    path: Assets/Scenes/Minijuego3.1.unity
-    guid: 62964538dbfacb34697588c105b9391a
-=======
-  - enabled: 1
-    path: Assets/Scenes/Minijuego3.4.unity
-    guid: a34d6ed4d551734408ded26ef69ca277
->>>>>>> Stashed changes
-  - enabled: 1
-    path: Assets/Scenes/NovelaEp1.unity
-    guid: 23d7a94fa7bb7a94dac9f41d2938ca14
-  - enabled: 1
-    path: Assets/Scenes/Minijuego3.4.unity
-    guid: a34d6ed4d551734408ded26ef69ca277
+  m_Scenes: []
   m_configObjects: {}
