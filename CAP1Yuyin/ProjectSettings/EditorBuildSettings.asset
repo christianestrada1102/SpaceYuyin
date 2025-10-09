@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Minijuego3.1.unity
     guid: 62964538dbfacb34697588c105b9391a
+  - enabled: 1
+    path: Assets/Scenes/NovelaEp1.unity
+    guid: 23d7a94fa7bb7a94dac9f41d2938ca14
   m_configObjects: {}
