@@ -31,7 +31,8 @@ public class Player : MonoBehaviour
     private int saltosRestantes = 1;
     private float tiempoDoubleJump = 0f;
 
-
+    [HideInInspector]
+    public bool enPlataformaMovil = false;
 
     void Start()
     {
@@ -99,7 +100,6 @@ public class Player : MonoBehaviour
             }
         }
 
-
         // Animaciones
         if (animator != null)
         {
@@ -124,19 +124,23 @@ public class Player : MonoBehaviour
     // ESTO FUERZA EL TAMAÑO CORRECTO DESPUÉS DE CADA FRAME
     void LateUpdate()
     {
-        Vector3 scale = fixedScale;
-
-        // Solo cambiar la dirección X según donde mire (INVERTIDO)
-        if (facingRight)
+        // Solo forzar el tamaño si NO está en plataforma móvil
+        if (!enPlataformaMovil)
         {
-            scale.x = -Mathf.Abs(fixedScale.x);
-        }
-        else
-        {
-            scale.x = Mathf.Abs(fixedScale.x);
-        }
+            Vector3 scale = fixedScale;
 
-        transform.localScale = scale;
+            // Solo cambiar la dirección X según donde mire (INVERTIDO)
+            if (facingRight)
+            {
+                scale.x = -Mathf.Abs(fixedScale.x);
+            }
+            else
+            {
+                scale.x = Mathf.Abs(fixedScale.x);
+            }
+
+            transform.localScale = scale;
+        }
     }
 
     // Ver el GroundCheck en el editor
@@ -162,9 +166,12 @@ public class Player : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
-        if (collision.transform.CompareTag("Spikes"))
+        if (collision.CompareTag("DeathZone"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            if (GameOverManager.instance != null)
+            {
+                GameOverManager.instance.MostrarGameOver();
+            }
         }
     }
 
@@ -176,5 +183,4 @@ public class Player : MonoBehaviour
 
         Debug.Log("¡Doble salto activado! Duración: " + (duracion > 0 ? duracion + " segundos" : "Permanente"));
     }
-
 }
