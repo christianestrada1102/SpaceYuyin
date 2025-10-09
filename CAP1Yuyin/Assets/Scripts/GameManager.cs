@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using Fungus;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,14 +18,21 @@ public class GameManager : MonoBehaviour
     [Header("Referencias UI - Panel de Victoria")]
     public GameObject panelVictoria;
     public TextMeshProUGUI textoVictoria;
-    public TextMeshProUGUI textoTimer; // Opcional: para mostrar el countdown
+    public TextMeshProUGUI textoTimer;
 
     [Header("Configuración de Victoria")]
     [TextArea(3, 6)]
     public string mensajeVictoria = "¡Felicidades!\n¡Has completado la Osa Mayor!";
+
+    // NUEVO: Opción para elegir el comportamiento
+    public enum TipoTransicion { CambiarEscena, EjecutarBloqueFungus }
+    public TipoTransicion tipoTransicion = TipoTransicion.CambiarEscena;
+
     public string nombreEscenaSiguiente = "Miniuego3.1";
+    public string nombreBloqueFungus = "SalidaSaul"; // ← NUEVO
+
     public float tiempoAntesDeAparecer = 0.5f;
-    public float tiempoAntesDecambiarEscena = 5f; // 5 segundos
+    public float tiempoAntesDecambiarEscena = 5f;
 
     private Dictionary<Transform, bool> estadoDestinos;
 
@@ -216,24 +224,50 @@ public class GameManager : MonoBehaviour
         Debug.Log(">>> ========================================");
         Debug.Log(">>> ¡¡¡BOTÓN CONTINUAR PRESIONADO!!!");
         Debug.Log(">>> ========================================");
+        Debug.Log($">>> Tipo de transición configurado: {tipoTransicion}");
 
-        if (string.IsNullOrEmpty(nombreEscenaSiguiente))
+        // Verificar qué tipo de transición usar
+        if (tipoTransicion == TipoTransicion.EjecutarBloqueFungus)
         {
-            Debug.LogError("ERROR: 'nombreEscenaSiguiente' está vacío!");
-            return;
+            Debug.Log(">>> ENTRANDO EN MODO FUNGUS");
+            Debug.Log($">>> Nombre del bloque a ejecutar: '{nombreBloqueFungus}'");
+            Debug.Log($">>> Nombre de escena siguiente: '{nombreEscenaSiguiente}'");
+
+            // Guarda el nombre del bloque
+            PlayerPrefs.SetString("BloqueFungusAEjecutar", nombreBloqueFungus);
+            PlayerPrefs.Save();
+            Debug.Log(">>> PlayerPrefs guardado correctamente");
+
+            // Verifica que se guardó
+            string verificacion = PlayerPrefs.GetString("BloqueFungusAEjecutar", "NO_ENCONTRADO");
+            Debug.Log($">>> Verificación PlayerPrefs: '{verificacion}'");
+
+            // Carga la escena por ÍNDICE
+            Debug.Log(">>> Intentando cargar escena índice 0...");
+            SceneManager.LoadScene(0);
+            Debug.Log(">>> Comando LoadScene ejecutado");
         }
-
-        Debug.Log($">>> Intentando cargar escena: '{nombreEscenaSiguiente}'");
-
-        // Verifica si la escena existe en Build Settings
-        if (Application.CanStreamedLevelBeLoaded(nombreEscenaSiguiente))
+        else // TipoTransicion.CambiarEscena
         {
-            Debug.Log($">>> Cargando escena: {nombreEscenaSiguiente}");
-            SceneManager.LoadScene(nombreEscenaSiguiente);
-        }
-        else
-        {
-            Debug.LogError($"ERROR: La escena '{nombreEscenaSiguiente}' NO existe en Build Settings. Ve a File > Build Settings y agrégala.");
+            Debug.Log(">>> ENTRANDO EN MODO CAMBIAR ESCENA NORMAL");
+
+            if (string.IsNullOrEmpty(nombreEscenaSiguiente))
+            {
+                Debug.LogError("ERROR: 'nombreEscenaSiguiente' está vacío!");
+                return;
+            }
+
+            Debug.Log($">>> Intentando cargar escena: '{nombreEscenaSiguiente}'");
+
+            if (Application.CanStreamedLevelBeLoaded(nombreEscenaSiguiente))
+            {
+                Debug.Log($">>> Cargando escena: {nombreEscenaSiguiente}");
+                SceneManager.LoadScene(nombreEscenaSiguiente);
+            }
+            else
+            {
+                Debug.LogError($"ERROR: La escena '{nombreEscenaSiguiente}' NO existe en Build Settings.");
+            }
         }
     }
 

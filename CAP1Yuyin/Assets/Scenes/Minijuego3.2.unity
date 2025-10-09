@@ -942,9 +942,11 @@ MonoBehaviour:
   textoVictoria: {fileID: 437299150}
   textoTimer: {fileID: 0}
   mensajeVictoria: "\xA1Felicidades!\n\xA1Has completado la constelacion de Aries"
-  nombreEscenaSiguiente: Minijuego3.1
+  tipoTransicion: 0
+  nombreEscenaSiguiente: Minijuego3.4
+  nombreBloqueFungus: 
   tiempoAntesDeAparecer: 0.5
-  tiempoAntesDecambiarEscena: 5
+  tiempoAntesDecambiarEscena: 2
 --- !u!1 &584808405
 GameObject:
   m_ObjectHideFlags: 0
