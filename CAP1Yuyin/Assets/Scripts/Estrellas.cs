@@ -88,7 +88,7 @@ public class StarDragAndDrop : MonoBehaviour
                 estaBloqueada = true; // ¡AHORA SÍ SE BLOQUEA CORRECTAMENTE!
 
                 // ¡EFECTO DE BRILLO!
-               
+
 
                 Debug.Log(gameObject.name + " bloqueada en su destino. ¡Completado!");
             }
