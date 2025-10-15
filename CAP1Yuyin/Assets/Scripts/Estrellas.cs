@@ -1,97 +1,89 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
-
-
-public class StarDragAndDrop : MonoBehaviour
+public class Estrellas : MonoBehaviour
 {
-    private Vector3 offset;
-    private float zCoord;
-    private GameManager solver; // Referencia al GameManager
-    private bool estaBloqueada = false; // ¡NUEVA VARIABLE! Controla si la estrella está bloqueada
+    [Header("Destinos (Slots)")]
+    public List<Transform> destinos;
+    public Dictionary<Transform, bool> estadoDestinos = new Dictionary<Transform, bool>();
 
-    void Start()
+    [Header("Control de progreso")]
+    public int estrellasColocadas = 0;
+    public int totalEstrellas = 3;
+
+    [Header("Fungus")]
+    public Fungus.Flowchart fungus;
+
+    [Header("Escenas")]
+    public string siguienteEscena = "Minijuego3.4";
+    public string escenaActual = "Minijuego3.2";
+
+    private void Start()
     {
-        // Se busca el GameManager en la escena.
-        solver = FindObjectOfType<GameManager>();
-        if (solver == null)
+        foreach (var destino in destinos)
         {
-            Debug.LogError("ERROR: No se encontró el GameManager. ¡El arrastre no funcionará!");
-            this.enabled = false; // Se desactiva para evitar errores si no hay GameManager
+            estadoDestinos[destino] = false;
         }
     }
 
-    // Función auxiliar para convertir la posición del mouse (en píxeles de pantalla) a coordenadas del mundo (escena)
-    private Vector3 GetMouseWorldPosition()
+    public void MarcarDestino(Transform destino, bool ocupado)
     {
-        // Coordenadas del mouse en pantalla (x, y) + la coordenada z que guardamos
-        Vector3 mousePoint = Input.mousePosition;
-        mousePoint.z = zCoord;
-
-        // Convertir las coordenadas de pantalla a coordenadas del mundo
-        return Camera.main.ScreenToWorldPoint(mousePoint);
-    }
-
-    // Se llama cuando el usuario presiona el botón del mouse sobre el Collider de este objeto
-    void OnMouseDown()
-    {
-        // ¡VERIFICACIÓN CRÍTICA! Si está bloqueada, no permitir arrastrar
-        if (estaBloqueada) return;
-
-        // Almacena la coordenada Z para mantener la estrella en el plano 2D correcto.
-        zCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
-
-        // Calcula el 'offset' (desplazamiento) para arrastrar desde el punto donde se hizo clic.
-        offset = gameObject.transform.position - GetMouseWorldPosition();
-    }
-
-    // Se llama mientras el usuario arrastra el mouse con el botón presionado
-    void OnMouseDrag()
-    {
-
-
-        // ¡VERIFICACIÓN CRÍTICA! Si está bloqueada, no permitir movimiento
-        if (estaBloqueada) return;
-
-        // Mueve el objeto a la nueva posición del mouse con el offset
-        transform.position = GetMouseWorldPosition() + offset;
-    }
-
-    // Se llama cuando el usuario suelta el botón del mouse
-    void OnMouseUp()
-    {
-        // ¡VERIFICACIÓN CRÍTICA! Si está bloqueada, no hacer nada
-        if (estaBloqueada) return;
-
-        // Si el script ya está deshabilitado (bloqueado), salimos inmediatamente.
-        if (!this.enabled) return;
-
-        // 1. Pídele al GameManager que encuentre el destino LIBRE más cercano.
-        Transform destinoLibreCercano = solver.GetClosestAvailableDestination(transform.position);
-
-        if (destinoLibreCercano != null)
+        if (estadoDestinos.ContainsKey(destino))
         {
-            // 2. Comprueba si la estrella está lo suficientemente cerca para "encajar".
-            float distancia = Vector3.Distance(transform.position, destinoLibreCercano.position);
+            estadoDestinos[destino] = ocupado;
 
-            // Umbral de cercanía: (¡Asegúrate de que este valor sea lo suficientemente grande!)
-            float umbralDeEncaje = .5f;
-
-            if (distancia < umbralDeEncaje)
+            if (ocupado)
             {
-                // ¡ACCIÓN CLAVE 1: ENCAJE FORZADO (Snapping)!
-                transform.position = destinoLibreCercano.position;
-
-                // ¡ACCIÓN CLAVE 2: BLOQUEO! Notifica al GameManager y marca como bloqueada
-                solver.MarkDestinationAsOccupied(destinoLibreCercano);
-                estaBloqueada = true; // ¡AHORA SÍ SE BLOQUEA CORRECTAMENTE!
-
-                // ¡EFECTO DE BRILLO!
-
-
-                Debug.Log(gameObject.name + " bloqueada en su destino. ¡Completado!");
+                estrellasColocadas++;
+                ComprobarVictoria();
             }
         }
+    }
+
+    private void ComprobarVictoria()
+    {
+        if (estrellasColocadas >= totalEstrellas)
+        {
+            Debug.Log("¡Minijuego completado!");
+
+            if (SceneManager.GetActiveScene().name == escenaActual)
+            {
+                GameManager.Instance.CambiarEscena(siguienteEscena);
+            }
+            else
+            {
+                if (fungus != null)
+                {
+                    fungus.ExecuteBlock("AfterConste");
+                    Debug.Log("Ejecutando bloque Fungus: AfterConste");
+                }
+                else
+                {
+                    Debug.LogWarning("No se asignó el Flowchart de Fungus en Estrellas.");
+                }
+            }
+        }
+    }
+
+    public Transform GetClosestAvailableDestination(Vector3 posicionActual)
+    {
+        Transform destinoMasCercano = null;
+        float distanciaMinima = Mathf.Infinity;
+
+        foreach (var par in estadoDestinos)
+        {
+            if (!par.Value)
+            {
+                float distancia = Vector3.Distance(posicionActual, par.Key.position);
+                if (distancia < distanciaMinima)
+                {
+                    distanciaMinima = distancia;
+                    destinoMasCercano = par.Key;
+                }
+            }
+        }
+
+        return destinoMasCercano;
     }
 }

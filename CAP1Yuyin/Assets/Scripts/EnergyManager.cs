@@ -1,11 +1,13 @@
+Ôªøusing System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EnergyManager : MonoBehaviour
 {
     public static EnergyManager instance;
 
-    [Header("ConfiguraciÛn de EnergÌa")]
+    [Header("Configuraci√≥n de Energ√≠a")]
     public float maxEnergy = 100f;
     public float currentEnergy = 0f;
 
@@ -16,36 +18,56 @@ public class EnergyManager : MonoBehaviour
     [Header("Victoria")]
     public GameObject panelVictoria;
 
+    [Header("Transici√≥n a Novela")]
+    [Tooltip("Nombre exacto de la escena de Fungus/novela")]
+    public string escenaNovelaSiguiente = "NovelaEp1";
+    [Tooltip("Nombre del bloque Fungus que debe ejecutarse al volver")]
+    public string bloqueAfterMini = "AfterMini";
+    [Tooltip("Segundos antes de cargar la escena de la novela")]
+    public float tiempoAntesDeCargar = 2f;
+
+    [Header("Debug/Test")]
+    public bool testWinWithKey = true; // presionar tecla W para ganar durante pruebas
+
     void Awake()
     {
         if (instance == null)
+        {
             instance = this;
+            // no hagas DontDestroyOnLoad aqu√≠: este objeto no necesita persistir entre escenas
+        }
         else
+        {
             Destroy(gameObject);
+        }
     }
 
     void Start()
     {
-        currentEnergy = 0f;
+        currentEnergy = Mathf.Clamp(currentEnergy, 0f, maxEnergy);
         UpdateUI();
 
-        // Asegurar que el panel estÈ oculto al inicio
         if (panelVictoria != null)
             panelVictoria.SetActive(false);
+    }
+
+    void Update()
+    {
+        // utilidad para probar en editor: presiona W para simular victoria
+        if (testWinWithKey && Input.GetKeyDown(KeyCode.W))
+        {
+            AddEnergy(maxEnergy); // fuerza completar
+        }
     }
 
     public void AddEnergy(float amount)
     {
         currentEnergy += amount;
-
-        if (currentEnergy > maxEnergy)
-            currentEnergy = maxEnergy;
+        currentEnergy = Mathf.Clamp(currentEnergy, 0f, maxEnergy);
 
         UpdateUI();
+        Debug.Log($"[EnergyManager] Energ√≠a: {currentEnergy}/{maxEnergy}");
 
-        Debug.Log("EnergÌa: " + currentEnergy + "/" + maxEnergy);
-
-        // Verificar si completÛ la misiÛn
         if (currentEnergy >= maxEnergy)
         {
             MisionCompletada();
@@ -54,25 +76,56 @@ public class EnergyManager : MonoBehaviour
 
     void MisionCompletada()
     {
-        Debug.Log("°MISI”N CUMPLIDA!");
+        Debug.Log("[EnergyManager] ¬°MISI√ìN CUMPLIDA!");
 
-        // Mostrar panel de victoria
+        // Mostrar panel de victoria si existe
         if (panelVictoria != null)
             panelVictoria.SetActive(true);
 
-        // Pausar el juego
-        Time.timeScale = 0f;
+        // Guardar el bloque que debe ejecutarse despu√©s del minijuego
+        PlayerPrefs.SetString("NextFungusBlock", bloqueAfterMini);
+        PlayerPrefs.SetInt("FromMiniGame", 1); // üëà Marca que vienes del minijuego
+        PlayerPrefs.Save();
+        Debug.Log($">>> Guardado en PlayerPrefs: NextFungusBlock = {bloqueAfterMini}");
+
+        // Aseguramos tiempo normal (por si el minijuego paus√≥ el timeScale)
+        Time.timeScale = 1f;
+
+        // Lanzar la coroutine que espera y carga la escena
+        StartCoroutine(WaitAndLoadNovela(tiempoAntesDeCargar));
     }
+
+    IEnumerator WaitAndLoadNovela(float seconds)
+    {
+        // opcional: si quieres bloquear input o reproducir anim, hazlo aqu√≠
+        float elapsed = 0f;
+        while (elapsed < seconds)
+        {
+            elapsed += Time.unscaledDeltaTime; // cuenta aun si el timeScale cambia
+            yield return null;
+        }
+
+        // Check de seguridad: que el nombre de escena no est√© vac√≠o
+        if (string.IsNullOrEmpty(escenaNovelaSiguiente))
+        {
+            Debug.LogError("[EnergyManager] Nombre de escena de novela vac√≠o. No se puede cargar la escena.");
+            yield break;
+        }
+
+        Debug.Log($"[EnergyManager] Cargando escena de novela: {escenaNovelaSiguiente}");
+        SceneManager.LoadScene(escenaNovelaSiguiente);
+    }
+
     void UpdateUI()
     {
-        if (energySlider != null)
+        if (energySlider != null && maxEnergy > 0f)
         {
-            energySlider.value = currentEnergy / maxEnergy;
+            energySlider.value = currentEnergy / maxEnergy; // slider espera 0..1
         }
 
         if (energyText != null)
         {
-            energyText.text = Mathf.Round(currentEnergy) + "/" + maxEnergy;
+            energyText.text = $"{Mathf.RoundToInt(currentEnergy)}/{Mathf.RoundToInt(maxEnergy)}";
         }
     }
 }
