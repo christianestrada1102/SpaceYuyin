@@ -1,42 +1,64 @@
+using Fungus;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.SceneManagement;
 
-public class FungusSceneCaller : MonoBehaviour
+public class FungusBlockExecutodsr : MonoBehaviour
 {
-    [Header("Configuración de Escena")]
-    [Tooltip("Nombre de la escena de Fungus a cargar")]
-    public string nombreEscenaFungus = "EscenaFungus";
-
-    [Header("Configuración de Fungus")]
-    [Tooltip("Nombre del bloque a ejecutar en Fungus")]
-    public string nombreBloque = "NombreDelBloque";
-
-    // Método público para llamar desde el botón
-    public void AlPresionarBoton()
+    void Awake()
     {
-        // Guardar el nombre del bloque en PlayerPrefs
-        PlayerPrefs.SetString("BloqueFungusAEjecutar", nombreBloque);
-        PlayerPrefs.Save();
+        // CRITICAL: Awake se ejecuta ANTES que Start de Fungus
+        // Verifica si hay un bloque pendiente de ejecutar
+        if (PlayerPrefs.HasKey("BloqueFungusAEjecutar"))
+        {
+            string nombreBloque = PlayerPrefs.GetString("BloqueFungusAEjecutar");
 
-        Debug.Log($">>> Guardando bloque para ejecutar: {nombreBloque}");
-        Debug.Log($">>> Cambiando a escena: {nombreEscenaFungus}");
+            // Limpia el PlayerPrefs
+            PlayerPrefs.DeleteKey("BloqueFungusAEjecutar");
+            PlayerPrefs.Save();
 
-        // Cargar la escena de Fungus
-        SceneManager.LoadScene(nombreEscenaFungus);
+            Debug.Log($">>> Detectado bloque pendiente: {nombreBloque}");
+
+            // Busca el Flowchart
+            Flowchart flowchart = FindObjectOfType<Flowchart>();
+
+            if (flowchart != null)
+            {
+                // Desactivar temporalmente para evitar Game Started
+                flowchart.enabled = false;
+
+                // Ejecutar el bloque correcto después
+                StartCoroutine(EjecutarBloquePersonalizado(flowchart, nombreBloque));
+            }
+            else
+            {
+                Debug.LogError("ERROR: No se encontró Flowchart en la escena");
+            }
+        }
+        else
+        {
+            Debug.Log(">>> No hay bloque pendiente, Fungus iniciará normalmente con Game Started");
+        }
     }
 
-    // Método alternativo si quieres ejecutar con parámetros desde código
-    public void CambiarEscenaYEjecutarBloque(string escena, string bloque)
+    private IEnumerator EjecutarBloquePersonalizado(Flowchart flowchart, string nombreBloque)
     {
-        PlayerPrefs.SetString("BloqueFungusAEjecutar", bloque);
-        PlayerPrefs.Save();
+        // Esperar a que la escena termine de cargar
+        yield return new WaitForEndOfFrame();
 
-        Debug.Log($">>> Guardando bloque para ejecutar: {bloque}");
-        Debug.Log($">>> Cambiando a escena: {escena}");
+        // Reactivar el Flowchart
+        flowchart.enabled = true;
 
-        SceneManager.LoadScene(escena);
+        // Esperar un frame más para que Fungus se inicialice
+        yield return null;
+
+        // DETENER cualquier bloque que se haya iniciado automáticamente
+        flowchart.StopAllBlocks();
+
+        // Ejecutar el bloque correcto
+        Debug.Log($">>> Ejecutando bloque guardado: {nombreBloque}");
+        flowchart.ExecuteBlock(nombreBloque);
     }
 }

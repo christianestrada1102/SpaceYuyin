@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     public TipoTransicion tipoTransicion = TipoTransicion.CambiarEscena;
 
     public string nombreEscenaSiguiente = "Miniuego3.1";
-    public string nombreBloqueFungus = "SalidaSaul"; // ← NUEVO
+    public string nombreBloqueFungus = "afterconste"; // ← NUEVO
 
     public float tiempoAntesDeAparecer = 0.5f;
     public float tiempoAntesDecambiarEscena = 5f;
