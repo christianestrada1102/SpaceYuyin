@@ -132,10 +132,10 @@ GameObject:
   m_Component:
   - component: {fileID: 43442516}
   - component: {fileID: 43442522}
-  - component: {fileID: 43442521}
   - component: {fileID: 43442519}
   - component: {fileID: 43442518}
   - component: {fileID: 43442517}
+  - component: {fileID: 43442523}
   m_Layer: 0
   m_Name: estrella (6)
   m_TagString: Untagged
@@ -211,9 +211,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0091047045, y: 0.005763709}
+  m_Offset: {x: -0.009104695, y: -0.025322437}
   serializedVersion: 2
-  m_Radius: 0.6946601
+  m_Radius: 0.8811767
 --- !u!114 &43442519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,24 +229,6 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!114 &43442521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 43442515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c05670b70e7dcfb4b82e4c4ab9e79fee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destinos: []
-  estrellasColocadas: 0
-  totalEstrellas: 3
-  fungus: {fileID: 0}
-  siguienteEscena: Minijuego3.4
-  escenaActual: Minijuego3.2
 --- !u!212 &43442522
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -299,6 +281,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &43442523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43442515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef3542ab67d00ad47a2108b840614573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controladorEstrellas: {fileID: 1311902342}
+  distanciaSnap: 0.5
+  velocidadRetorno: 10
 --- !u!1 &127667917
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,10 +306,10 @@ GameObject:
   m_Component:
   - component: {fileID: 127667918}
   - component: {fileID: 127667924}
-  - component: {fileID: 127667923}
   - component: {fileID: 127667921}
   - component: {fileID: 127667920}
   - component: {fileID: 127667919}
+  - component: {fileID: 127667925}
   m_Layer: 0
   m_Name: estrella (8)
   m_TagString: Untagged
@@ -406,24 +403,6 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!114 &127667923
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 127667917}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c05670b70e7dcfb4b82e4c4ab9e79fee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destinos: []
-  estrellasColocadas: 0
-  totalEstrellas: 3
-  fungus: {fileID: 0}
-  siguienteEscena: Minijuego3.4
-  escenaActual: Minijuego3.2
 --- !u!212 &127667924
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -476,6 +455,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &127667925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127667917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef3542ab67d00ad47a2108b840614573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controladorEstrellas: {fileID: 1311902342}
+  distanciaSnap: 0.5
+  velocidadRetorno: 10
 --- !u!1 &138674832
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,6 +629,108 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 369449fc7879dfb4d90a050ae3cb90e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &415949059
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 415949060}
+  - component: {fileID: 415949061}
+  m_Layer: 0
+  m_Name: ConstelacionManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &415949060
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415949059}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.255904, y: 0.8635784, z: 0.04309614}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &415949061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415949059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dbd7b326eecfc74ea7225b483bf9931, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasVictoria: {fileID: 584808408}
+  retardoMostrarCanvas: 1
+--- !u!1 &422973650
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 422973651}
+  - component: {fileID: 422973652}
+  m_Layer: 0
+  m_Name: LineDrawer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &422973651
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422973650}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.255904, y: 0.8635784, z: 0.04309614}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &422973652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422973650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c6c2c468b9e9f34a8d72f7bac4b7bc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controladorEstrellas: {fileID: 1311902342}
+  lineRenderer: {fileID: 0}
+  ordenConexion:
+  - {fileID: 1366646902}
+  - {fileID: 723606256}
+  - {fileID: 180304983}
+  - {fileID: 2126517336}
+  - {fileID: 1279224482}
+  velocidadDibujo: 2
+  anchoLinea: 0.1
+  colorLinea: {r: 1, g: 1, b: 1, a: 1}
+  materialLinea: {fileID: 0}
 --- !u!1 &437299148
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,53 +985,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &557110026
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 557110027}
-  - component: {fileID: 557110028}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &557110027
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 557110026}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33, y: 19, z: 0.024783378}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &557110028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 557110026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8f5724ca48de9747a5500f20d9eb022, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  escenaActual: Minijuego3.2
-  siguienteEscena: Minijuego3.4
-  fungus: {fileID: 0}
 --- !u!1 &584808405
 GameObject:
   m_ObjectHideFlags: 0
@@ -949,7 +998,7 @@ GameObject:
   - component: {fileID: 584808407}
   - component: {fileID: 584808406}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Canvas12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1256,7 +1305,7 @@ GameObject:
   - component: {fileID: 1079934056}
   - component: {fileID: 1079934055}
   m_Layer: 5
-  m_Name: Fondo
+  m_Name: Fondo12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1387,6 +1436,58 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1192545362}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1311902340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1311902341}
+  - component: {fileID: 1311902342}
+  m_Layer: 0
+  m_Name: EstrellasMana
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1311902341
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311902340}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.8270233, y: 0.36943287, z: 0.013001552}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1311902342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311902340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c05670b70e7dcfb4b82e4c4ab9e79fee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destinos:
+  - {fileID: 1366646902}
+  - {fileID: 723606256}
+  - {fileID: 180304983}
+  - {fileID: 2126517336}
+  - {fileID: 1279224482}
+  estrellasColocadas: 0
+  totalEstrellas: 3
 --- !u!1 &1363925591
 GameObject:
   m_ObjectHideFlags: 0
@@ -1726,9 +1827,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1698617664}
   - component: {fileID: 1698617670}
-  - component: {fileID: 1698617669}
   - component: {fileID: 1698617667}
   - component: {fileID: 1698617666}
+  - component: {fileID: 1698617671}
   - component: {fileID: 1698617665}
   m_Layer: 0
   m_Name: estrella (9)
@@ -1823,24 +1924,6 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!114 &1698617669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1698617663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c05670b70e7dcfb4b82e4c4ab9e79fee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destinos: []
-  estrellasColocadas: 0
-  totalEstrellas: 3
-  fungus: {fileID: 0}
-  siguienteEscena: Minijuego3.4
-  escenaActual: Minijuego3.2
 --- !u!212 &1698617670
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1893,6 +1976,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1698617671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1698617663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef3542ab67d00ad47a2108b840614573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controladorEstrellas: {fileID: 1311902342}
+  distanciaSnap: 0.5
+  velocidadRetorno: 10
 --- !u!1 &1706190394
 GameObject:
   m_ObjectHideFlags: 0
@@ -1903,10 +2001,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1706190395}
   - component: {fileID: 1706190401}
-  - component: {fileID: 1706190400}
   - component: {fileID: 1706190398}
   - component: {fileID: 1706190397}
   - component: {fileID: 1706190396}
+  - component: {fileID: 1706190402}
   m_Layer: 0
   m_Name: estrella (7)
   m_TagString: Untagged
@@ -2000,24 +2098,6 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!114 &1706190400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1706190394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c05670b70e7dcfb4b82e4c4ab9e79fee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destinos: []
-  estrellasColocadas: 0
-  totalEstrellas: 3
-  fungus: {fileID: 0}
-  siguienteEscena: Minijuego3.4
-  escenaActual: Minijuego3.2
 --- !u!212 &1706190401
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2070,6 +2150,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1706190402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706190394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef3542ab67d00ad47a2108b840614573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controladorEstrellas: {fileID: 1311902342}
+  distanciaSnap: 0.5
+  velocidadRetorno: 10
 --- !u!1 &1803031850
 GameObject:
   m_ObjectHideFlags: 0
@@ -2166,7 +2261,7 @@ GameObject:
   - component: {fileID: 1897945605}
   - component: {fileID: 1897945604}
   m_Layer: 5
-  m_Name: PanelVictoria
+  m_Name: PanelVictoria12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2240,9 +2335,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2055254253}
   - component: {fileID: 2055254259}
-  - component: {fileID: 2055254258}
   - component: {fileID: 2055254256}
   - component: {fileID: 2055254255}
+  - component: {fileID: 2055254260}
   - component: {fileID: 2055254254}
   m_Layer: 0
   m_Name: estrella (5)
@@ -2337,24 +2432,6 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!114 &2055254258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2055254252}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c05670b70e7dcfb4b82e4c4ab9e79fee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destinos: []
-  estrellasColocadas: 0
-  totalEstrellas: 3
-  fungus: {fileID: 0}
-  siguienteEscena: Minijuego3.4
-  escenaActual: Minijuego3.2
 --- !u!212 &2055254259
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2407,6 +2484,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2055254260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055254252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef3542ab67d00ad47a2108b840614573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controladorEstrellas: {fileID: 1311902342}
+  distanciaSnap: 0.5
+  velocidadRetorno: 10
 --- !u!1 &2117215734
 GameObject:
   m_ObjectHideFlags: 0
@@ -2529,7 +2621,9 @@ SceneRoots:
   - {fileID: 602148757}
   - {fileID: 1363925593}
   - {fileID: 138674834}
-  - {fileID: 557110027}
   - {fileID: 260052426}
   - {fileID: 495792920}
   - {fileID: 1495423166}
+  - {fileID: 1311902341}
+  - {fileID: 415949060}
+  - {fileID: 422973651}

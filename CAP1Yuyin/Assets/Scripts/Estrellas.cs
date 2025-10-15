@@ -12,56 +12,37 @@ public class Estrellas : MonoBehaviour
     public int estrellasColocadas = 0;
     public int totalEstrellas = 3;
 
-    [Header("Fungus")]
-    public Fungus.Flowchart fungus;
-
-    [Header("Escenas")]
-    public string siguienteEscena = "Minijuego3.4";
-    public string escenaActual = "Minijuego3.2";
 
     private void Start()
     {
+        // Inicializar contador en 0
+        estrellasColocadas = 0;
+
         foreach (var destino in destinos)
         {
             estadoDestinos[destino] = false;
         }
+
+        Debug.Log($"Estrellas inicializadas. Total: {totalEstrellas}, Colocadas: {estrellasColocadas}");
     }
 
     public void MarcarDestino(Transform destino, bool ocupado)
     {
         if (estadoDestinos.ContainsKey(destino))
         {
+            // Solo contar si el estado cambia
+            bool estadoAnterior = estadoDestinos[destino];
             estadoDestinos[destino] = ocupado;
 
-            if (ocupado)
+            if (ocupado && !estadoAnterior)
             {
                 estrellasColocadas++;
-                ComprobarVictoria();
+                Debug.Log($"Estrella colocada. Progreso: {estrellasColocadas}/{totalEstrellas}");
             }
-        }
-    }
-
-    private void ComprobarVictoria()
-    {
-        if (estrellasColocadas >= totalEstrellas)
-        {
-            Debug.Log("¡Minijuego completado!");
-
-            if (SceneManager.GetActiveScene().name == escenaActual)
+            else if (!ocupado && estadoAnterior)
             {
-                GameManager.Instance.CambiarEscena(siguienteEscena);
-            }
-            else
-            {
-                if (fungus != null)
-                {
-                    fungus.ExecuteBlock("AfterConste");
-                    Debug.Log("Ejecutando bloque Fungus: AfterConste");
-                }
-                else
-                {
-                    Debug.LogWarning("No se asignó el Flowchart de Fungus en Estrellas.");
-                }
+                estrellasColocadas--;
+                Debug.Log($"Estrella removida. Progreso: {estrellasColocadas}/{totalEstrellas}");
             }
         }
     }
